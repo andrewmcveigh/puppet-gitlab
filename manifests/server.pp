@@ -65,6 +65,7 @@ class gitlab::server {
       provider    => 'shell',
       cwd         => "${gitlab_home}/gitlab",
       user        => $gitlab_user,
+      creates     => "${gitlab_home}/.gitlab_setup_done",
       require     => [
         Exec['Get gitlab'],
         Package['bundler']
