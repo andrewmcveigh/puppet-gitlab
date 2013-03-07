@@ -86,14 +86,14 @@ backup:
 
 # Gitolite settings
 gitolite:
-  admin_uri: <%= @git_user %>@localhost:gitolite-admin
+  admin_uri: <%= @git_user %>@<%= @gitlab_domain %>:gitolite-admin
   repos_path: <%= @git_home %>/repositories/
   hooks_path: <%= @git_home %>/.gitolite/hooks/
   admin_key: gitlab
   upload_pack: true
   receive_pack: true
   ssh_user: <%= @git_user %>
-  ssh_host: localhost
+  ssh_host: <%= @gitlab_domain %>
   # port: 22
   # config_file: gitolite.conf
 
