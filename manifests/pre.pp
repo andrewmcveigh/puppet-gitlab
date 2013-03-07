@@ -129,9 +129,9 @@ class gitlab::debian_packages {
         require => Exec['apt-get update'],
   }
 
-  case $::lsbdistcodename {
+  #case $::lsbdistcodename {
     # Need to install a fresh ruby version...
-    'squeeze': {
+    #  'squeeze': {
       package {
         ['checkinstall','libcurl4-openssl-dev','libreadline6-dev','libpq-dev',
         'libssl-dev','build-essential','zlib1g-dev','libyaml-dev','libc6-dev']:
@@ -166,16 +166,16 @@ class gitlab::debian_packages {
           logoutput   => 'on_failure',
           refreshonly => true;
       }
-    } # Squeeze, Precise
-    default: {
-      # Assuming default ruby 1.9.3 (wheezy,quantal,precise)
-      package {
-        ['ruby','ruby-dev','rubygems','rake']:
-          ensure  => installed,
-          require => Exec['apt-get update'];
-      }
-    } # Default
-  } # Case:: $::operatingsystem
+      #} # Squeeze, Precise
+      #default: {
+      #  # Assuming default ruby 1.9.3 (wheezy,quantal,precise)
+      #  package {
+      #    ['ruby','ruby-dev','rubygems','rake']:
+      #      ensure  => installed,
+      #      require => Exec['apt-get update'];
+      #  }
+      #} # Default
+      #} # Case:: $::operatingsystem
 
   service {
     'redis-server':
